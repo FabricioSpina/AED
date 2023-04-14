@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main(){
+  int lista[10], i, n;
+
+  
+  for(i=0; i<10; i++){
+    scanf("%d",& lista[i]);
+    if (lista[i] <= 0)
+      lista[i]=1;
+  }
+  for(n=0; n<10; n++)
+  printf("X[%d] = %d\n",n,lista[n]); 
+
+}
