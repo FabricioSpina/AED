@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//criando a lista encadeada
+
+typedef struct amigo{
+  char nomes[100];
+  struct amigo *proximo;
+}amigo;
+
+
+typedef struct{
+  amigo *inicio;
+  int tam;
+}Lista;
+
+
+
+//inserindo inicio da lista
+
+void inserirInicio(Lista *lista, char nome){
+  amigo *novo = (amigo*)malloc(sizeof(amigo));
+  novo->nomes = nome;
+  novo->proximo = lista->inicio;
+  lista->inicio = novo;
+  lista->tam++;
+}
+
+//imprimir a lista
+
+void imprimir(Lista *lista){
+  amigo *inicio = lista->inicio;
+  while(inicio != NULL)
+    printf("%s ", inicio->nome);
+    inicio = inicio->proximo;
+}
+
+
+
+
+
+int main(){
+
+  
+  // declarando os parametros da lista    
+  Lista lista;
+  lista.inicio = NULL;
+  lista.tam = 0;
+
+  
+  char lista_atual[10],lista_nova[10],amigo_indicado[10], nomes;
+  char *t;
+
+  //lendo as entradas
+  fgets(lista_atual,10,stdin);
+  fgets(lista_nova,10,stdin);
+  //fgets(amigo_indicado,100,stdin);
+
+  //separando os nomes
+  t = strtok(lista_atual, " ");
+  
+  while(t != NULL){
+    inserirInicio(&lista, nomes);
+    printf("%s\n", t);
+    t = strtok(NULL, " ");
+  }
+  
+  
+  
+}
