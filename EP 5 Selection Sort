@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+
+int main() {
+int vetor[***tamanho do vetor];
+int t, i, j, pivo, a, tamanho_do_vetor;
+clock_t tempo;
+
+tamanho_do_vetor = ***;
+  
+/* Criando o Vetor de tamanho x com valores aleatorios*/
+for (t = 0; t < tamanho_do_vetor; t++){   
+  vetor[t] = rand() % 100;
+  printf("%d ", vetor[t]);
+}
+
+tempo = clock(); //armazenando o tempo inicial
+  
+/*Algoritmo selection sort*/
+
+for (i = 0; i < tamanho_do_vetor - 1; i++ ){
+  pivo = i;
+  for(j = i+1; j < tamanho_do_vetor; j++)
+    if(vetor[j] < vetor[pivo]) pivo = j;
+  if(pivo != i){
+    int temp = vetor[i];
+    vetor[i] = vetor[pivo];
+    vetor[pivo] = temp;
+  }
+printf("%d ", vetor[i]);
+}
+//armazenando o tempo final e calculando o tempo de execução
+tempo = clock() - tempo;
+printf("\nTempo de execução: %f", (float)tempo/CLOCKS_PER_SEC);
+}
