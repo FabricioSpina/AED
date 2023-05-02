@@ -30,7 +30,7 @@ tempo = clock()- tempo; //armazena o tempo final
   
 for (a = 0; a < tamanho_do_vetor; a++)
   printf("%d ",vetor[a]);
-printf("\nTempo de execução:%f", (float)tempo/CLOCKS_PER_SEC);
+printf("\nTempo de execução:%f", ((float)tempo/CLOCKS_PER_SEC)*100);
   
   return 0;
 }
