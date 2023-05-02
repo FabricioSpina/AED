@@ -23,13 +23,13 @@ for (t = 0; t < tamanho_do_vetor; t++){
 
 tempo=clock();
 heapsort(tamanho_do_vetor, vetor);
-tempo=tempo=clock();
+tempo=clock()-tempo;
 for (i=0; i < tamanho_do_vetor; i++)
   printf("%d ",vetor[i]);
 printf("\nTempo de execução:%f", (float)tempo/CLOCKS_PER_SEC);
   
 }
-
+/*Algoritmo HeapSort*/
 void insereemheap(int m,int v[]){
   int f = m + 1;
   while(f > 1 && v[f/2] < v[f]){
