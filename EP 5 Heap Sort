@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void insereemheap (int m, int v[]);
+void heapify (int m, int v[]);
+void heapsort (int n, int v[]);
+
+
+
+int main(){
+int vetor[***tamanho do vetor];
+int t, i, j, pivo, a, tamanho_do_vetor;
+clock_t tempo;
+tamanho_do_vetor=***tamanho do vetor;
+
+
+/* Criando o Vetor de tamanho x com valores aleatorios*/
+for (t = 0; t < tamanho_do_vetor; t++){   
+  vetor[t] = rand() % 100;
+  printf("%d ", vetor[t]);
+}
+
+tempo=clock();
+heapsort(tamanho_do_vetor, vetor);
+tempo=tempo=clock();
+for (i=0; i < tamanho_do_vetor; i++)
+  printf("%d ",vetor[i]);
+printf("\nTempo de execução:%f", (float)tempo/CLOCKS_PER_SEC);
+  
+}
+
+void insereemheap(int m,int v[]){
+  int f = m + 1;
+  while(f > 1 && v[f/2] < v[f]){
+    int t = v[f/2];
+    v[f/2] = v[f];
+    v[f]=t;
+    f = f/2;
+  }
+}
+
+void heapify(int m, int v[]){
+  int t, f = 2;
+  while (f <= m){
+    if (f < m && v[f] < v[f+1])
+      ++f;
+    if (v[f/2] >= v[f]) break;
+    t = v[f/2]; 
+    v[f/2] = v[f];
+    v[f] = t;
+    f *= 2;
+  }
+}
+
+void heapsort(int n, int v[]){
+  int m;
+  for (m = 1; m < n; m++)
+    insereemheap(m,v);
+  for(m = n; m > 1; m--){
+    int t = v[1];
+    v[1] = v[m];
+    v[m] = t;
+    heapify(m-1, v);
+  }
+}
