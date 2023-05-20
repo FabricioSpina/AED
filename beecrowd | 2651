@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+
+
+int main(void) {
+  char carta[10000], zelda[6]="zelda";
+  fgets(carta, 10000, stdin);
+
+  //função para transformar todas os elemento do input para letras minusculas
+  for(int i = 0; carta[i]; i++){
+  carta[i] = tolower(carta[i]);
+  }
+
+  
+  int n = strlen(carta);
+  int m = strlen(zelda)-1;
+
+  
+  //algoritmo de comparação
+  int k, r, temp=0;
+  for(k = m; k <= n; k++){
+    r = 0;
+    while (r < m && zelda[m-r] == carta[k-r]) r+=1;
+    if (r >= m) temp+=1;
+  }
+  if (temp>0) printf("Link Bolado\n");
+  else printf("Link Tranquilo\n");
+  
+}
